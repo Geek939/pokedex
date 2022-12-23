@@ -5,10 +5,13 @@ import { createSlice } from "@reduxjs/toolkit";
 name:"nameTrainer",
 initialState:"",
 reducers:{
-
+    
+    setNameTrainerGlobal: (state, action) => action.payload
 
 }
 
 })
+
+export const {setNameTrainerGlobal} = nameTrainerSlice.actions
 
 export default nameTrainerSlice.reducer
