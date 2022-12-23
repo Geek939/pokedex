@@ -1,6 +1,7 @@
 import React from 'react'
 import { setNameTrainerGlobal } from '../store/slices/nameTrainer.slice'
 import {useDispatch} from 'react-redux'
+import "./styles/FormHome.css"
 
 const FormHome = () => {
   
