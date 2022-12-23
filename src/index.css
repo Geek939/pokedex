@@ -1,7 +1,7 @@
 
 :root{
- --color-red: #D93F3F;
- 
+ --color-red: #FE1936;
+ --color-btn: #D93F3F;
 
 }
 
@@ -14,6 +14,7 @@
 
     body{
         margin: 0;
+        font-family: 'Inter', sans-serif;
     }
 
     img{
