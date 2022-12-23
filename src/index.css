@@ -1,0 +1,32 @@
+
+:root{
+ --color-red: #D93F3F;
+ 
+
+}
+
+
+/*reset*/
+
+   *{
+    box-sizing: border-box;
+    }
+
+    body{
+        margin: 0;
+    }
+
+    img{
+        width: 100%;
+        display: block;
+
+    }
+
+    a{
+        font-family: inherit;
+        text-decoration: none;
+    }
+
+    input{
+        outline: none;
+    }
