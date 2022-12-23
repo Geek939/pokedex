@@ -13,9 +13,15 @@
 
 .home__btn{
     border: none;
-    padding: 9px 12px;
+    padding: 9px 25px;
     background-color: var(--color-btn);
     color: white;
+    cursor: pointer;
+
+}
+
+.home__btn:hover{
+    filter: brightness(1.1);
 }
 
 
