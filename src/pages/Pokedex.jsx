@@ -13,7 +13,7 @@ const Pokedex = () => {
     const URL= "https://pokeapi.co/api/v2/pokemon/?limit=1154"
     axios.get(URL)
     .then(res => setPokemons(res.data.results))
-    .cash(err=> console.log(err))
+    .cash(err => console.log(err))
 
   },[])
   
