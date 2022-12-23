@@ -5,6 +5,7 @@ import Pokedex from './pages/Pokedex'
 import Pokemon from './pages/Pokemon'
 import RouteProtected from './components/RouteProtected'
 import HomeProtected from './components/HomeProtected'
+import Footer from './Layout/Footer'
 
 
 
@@ -25,7 +26,7 @@ function App() {
         </Route>
        
      </Routes>
-       
+       <Footer/>
     </div>
   )
 }
