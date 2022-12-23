@@ -5,7 +5,7 @@ const ListPokemons = ({pokemons}) => {
   return (
     <ul>
         {
-            pokemons.map((pokemon)=> <PokemonCard  pokemon={pokemon}/>)
+            pokemons.map((pokemon)=> <PokemonCard key={pokemon.url} pokemon={pokemon}/>)
         }
 
     </ul>
