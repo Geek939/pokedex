@@ -24,15 +24,15 @@ const Pokemon = () => {
         <section className='pokemonId__header'></section>
         <img className='pokemonId__img' src={dataPokemon?.sprites.other["official-artwork"].front_default} alt="" />
         <h3 className='pokemonId__id'>{dataPokemon?.id}</h3>
-        <h2 className='pokemonId__name'>{dataPokemon.name}</h2>
+        <h2 className='pokemonId__name'>{dataPokemon?.name}</h2>
         <section className='pokemonId__features'>
           <div className='pokemonId__feature'>
             <p className='pokemonId__feature-name'>Weight</p>
-            <p className='pokemonId__feature-value'>{dataPokemon.weight}</p>
+            <p className='pokemonId__feature-value'>{dataPokemon?.weight}</p>
           </div>
           <div className='pokemonId__feature'>
             <p className='pokemonId__feature-name'>Height</p>
-            <p className='pokemonId__feature-value'>{dataPokemon.height}</p>
+            <p className='pokemonId__feature-value'>{dataPokemon?.height}</p>
           </div>
         </section>
         <section className='pokemonId__info'>
@@ -50,6 +50,9 @@ const Pokemon = () => {
           <div className='pokemonId__info-skills'>
             <h4 className='pokemonId__skills-title'>Abilities</h4>
             <div className='pokemonId__skill-container'>
+              {
+                dataPokemon?.abilities.map(ability => <p key={ability.ability.url}>{ability.ability.name}</p>)
+              }
               <p></p>
               <p></p>
               <p></p>
@@ -60,15 +63,18 @@ const Pokemon = () => {
           <h3 className='pokemonId__stats-title'>Stats</h3>
           <div className='pokemonId__stats-container'>
             {/*Dinamicamente*/} 
+            { dataPokemon?.stats.map(stat=> (
             <div className='pokemonId__stat'>
               <div className='pokemonId__stat-header'>
-                <p className='pokemonId__stat-name'>HP</p>
-                <p className='pokemonId__stat-value'>45/150</p>
+                <p className='pokemonId__stat-name'>{stat.stat.name}</p>
+                <p className='pokemonId__stat-value'>{stat.base_stat}</p>
               </div>
               <div className='pokemonId__stat-bar'>
                 <div className='pokemonId__stat-barProgress'></div>
               </div>
             </div>
+          ))  
+          }
           </div>
 
         </section>
