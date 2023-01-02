@@ -5,7 +5,7 @@ import "./styles/PokemonCard.css"
 
 const PokemonCard = ({pokemon}) => {
 
-  const [datapokemon, setDatapokemon] = useState()
+  const [dataPokemon, setDatapokemon] = useState()
 
 
 
@@ -16,21 +16,22 @@ const PokemonCard = ({pokemon}) => {
     
   },[])
 
-    const types = datapokemon?.types.map(type => type.type.name).join(" / ")
+    const types = dataPokemon?.types.map(type => type.type.name).join(" / ")
 
 
   return (
     <article className='pokeCard'>
       <section className='pokeCard__header'></section>
+      <p className='text-test'>hola mundo</p>
       <section className='pokecard__content'>
-      <img className='pokeCard__img' src= {datapokemon?.sprites.other["official-artwork"].front_default} alt="" />
+      <img className='pokeCard__img' src= {dataPokemon?.sprites.other["official-artwork"].front_default} alt="" />
       <h3 className='pokeCard__name'>{pokemon.name}</h3>
       <p className='pokeCard__types'>{types}</p>
       <p className='pokeCard__types-title'>Type</p>
       <hr />
       <section className='pokeCard__stats'>
         {
-          datapokemon?.stats.map (stat => (
+          dataPokemon?.stats.map (stat => (
         <div className='pokeCard__stat' >
           <p className='pokeCard__stat-name'>{stat.stat.name}</p>
           <p className='pokeCard__stat-value'>{stat.base_stat}</p>
