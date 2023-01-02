@@ -87,4 +87,29 @@
     font-size: 14px;
 }
 
+.pokemonId__stats-title{
+    text-align: left;
+}
+
+.pokemonId__stat-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pokemonId__stat-name{
+    text-transform: capitalize;
+}
+
+.pokemonId__stat-bar{
+    height: 20px;
+    width: 100%;
+    background-color: #F6F6F6; 
+}
+
+.pokemonId__stat-barProgress{
+    background: linear-gradient(90deg, #FCD676, #E6901E);
+    height: 20px;
+    width: 60%;
+}
+
 

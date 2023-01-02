@@ -8,6 +8,12 @@ const Pokemon = () => {
   const [dataPokemon, setDataPokemon] = useState()
   
   const {id} = useParams()
+
+  const getPercentBarProgress =(valueStat) =>{
+    const maxValue = 150
+    return (valueStat*100) / maxValue
+  }
+
   
   useEffect(()=> {
     const URL = `https://pokeapi.co/api/v2/pokemon/${id}/`
@@ -70,7 +76,7 @@ const Pokemon = () => {
                 <p className='pokemonId__stat-value'>{stat.base_stat}</p>
               </div>
               <div className='pokemonId__stat-bar'>
-                <div className='pokemonId__stat-barProgress'></div>
+                <div style={{width: getPercentBarProgress(stat.base_stat)}} className='pokemonId__stat-barProgress'></div>
               </div>
             </div>
           ))  
