@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import "./styles/Pokemon.css"
 
 const Pokemon = () => {
 
@@ -18,8 +19,7 @@ const Pokemon = () => {
   
   
   return (
-    <main>
-     
+    <main className='pokemon'>
       <section className='pokemonId'>
         <section className='pokemonId__header'></section>
         <img className='pokemonId__img' src={dataPokemon?.sprites.other["official-artwork"].front_default} alt="" />
@@ -36,22 +36,22 @@ const Pokemon = () => {
           </div>
         </section>
         <section className='pokemonId__info'>
-          <div className='pokemonId__type'>
-            <h4 className='pokemonId__type-title'>Types</h4>
-            <div className='pokemonId__type-container'>
+          <div className='pokemonId__info-container'>
+            <h4 className='pokemonId__info-title'>Types</h4>
+            <div className='pokemonId__info-data'>
               {
-                dataPokemon?.types.map(type => <p className='pokemonId__type-value' key={type.type.name}>{type.type.name}</p>)
+                dataPokemon?.types.map(type => <p className='pokemonId__info-value' key={type.type.name}>{type.type.name}</p>)
               }
               <p></p>
               <p></p>
               <p></p>
             </div>
           </div>
-          <div className='pokemonId__info-skills'>
-            <h4 className='pokemonId__skills-title'>Abilities</h4>
-            <div className='pokemonId__skill-container'>
+          <div className='pokemonId__info-container'>
+            <h4 className='pokemonId__info-title'>Abilities</h4>
+            <div className='pokemonId__info-data'>
               {
-                dataPokemon?.abilities.map(ability => <p key={ability.ability.url}>{ability.ability.name}</p>)
+                dataPokemon?.abilities.map(ability => <p className='pokemonId__info-value' key={ability.ability.url}>{ability.ability.name}</p>)
               }
               <p></p>
               <p></p>
