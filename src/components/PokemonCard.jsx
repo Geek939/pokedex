@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-
+import "./styles/PokemonCard.css"
 
 
 const PokemonCard = ({pokemon}) => {
@@ -16,26 +16,29 @@ const PokemonCard = ({pokemon}) => {
     
   },[])
 
-    const types = datapokemon?.types.map(type => type.type.name[0].toUpperCase() + type.type.name.substring(1))
+    const types = datapokemon?.types.map(type => type.type.name).join(" / ")
 
 
   return (
     <article className='pokeCard'>
-      <section className='pokeCard_header'></section>
-      <section className='pokecard_content'>
-      <img className='pokeCard_img' src= {datapokemon?.sprites.other["official-artwork"].front_default} alt="" />
-      <h3 className='pokeCard_name'></h3>
-      <p className='pokeCard_types'></p>
-      <p className='pokeCard_types-title'></p>
+      <section className='pokeCard__header'></section>
+      <section className='pokecard__content'>
+      <img className='pokeCard__img' src= {datapokemon?.sprites.other["official-artwork"].front_default} alt="" />
+      <h3 className='pokeCard__name'>{pokemon.name}</h3>
+      <p className='pokeCard__types'>{types}</p>
+      <p className='pokeCard__types-title'>Type</p>
       <hr />
-      <section className='pokeCard_stats'>
-        <div className='pokeCard_stat' >
-          <p className='pokeCard_stat-name' ></p>
-          <p className='pokeCard_stat-value' ></p>
+      <section className='pokeCard__stats'>
+        {
+          datapokemon?.stats.map (stat => (
+        <div className='pokeCard__stat' >
+          <p className='pokeCard__stat-name'>{stat.stat.name}</p>
+          <p className='pokeCard__stat-value'>{stat.base_stat}</p>
         </div>
+          ))
+        }
       </section>
       </section>
-  <h3>{pokemon.name}</h3>
   </article>
   )
 }
