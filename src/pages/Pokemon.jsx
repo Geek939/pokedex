@@ -11,7 +11,7 @@ const Pokemon = () => {
 
   const getPercentBarProgress =(valueStat) =>{
     const maxValue = 150
-    return (valueStat*100) / maxValue
+    return `${(valueStat*100) / maxValue}%`
   }
 
   
@@ -46,7 +46,7 @@ const Pokemon = () => {
             <h4 className='pokemonId__info-title'>Types</h4>
             <div className='pokemonId__info-data'>
               {
-                dataPokemon?.types.map(type => <p className='pokemonId__info-value' key={type.type.name}>{type.type.name}</p>)
+                dataPokemon?.types.map(type => <p className={`pokemonId__info-value bg-${type.type.name}`} key={type.type.name}>{type.type.name}</p>)
               }
               <p></p>
               <p></p>
