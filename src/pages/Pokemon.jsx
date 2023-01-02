@@ -48,7 +48,7 @@ const Pokemon = () => {
             </div>
           </div>
           <div className='pokemonId__info-skills'>
-            <h4 className='pokemonId__skills-title'></h4>
+            <h4 className='pokemonId__skills-title'>Abilities</h4>
             <div className='pokemonId__skill-container'>
               <p></p>
               <p></p>
