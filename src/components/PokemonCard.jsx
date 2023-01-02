@@ -20,10 +20,9 @@ const PokemonCard = ({pokemon}) => {
 
 
   return (
-    <article className='pokeCard'>
-      <section className='pokeCard__header'></section>
-      <p className='text-test'>hola mundo</p>
-      <section className='pokecard__content'>
+    <article className={`pokeCard border ${dataPokemon?.types[0].type.name}`}>
+      <section className={`pokeCard__header bg-lg-${dataPokemon?.types[0].type.name}`}></section>
+      <section className='pokeCard__content'>
       <img className='pokeCard__img' src= {dataPokemon?.sprites.other["official-artwork"].front_default} alt="" />
       <h3 className='pokeCard__name'>{pokemon.name}</h3>
       <p className='pokeCard__types'>{types}</p>
