@@ -23,7 +23,7 @@ const Pokemon = () => {
       <section className='pokemonId'>
         <section className='pokemonId__header'></section>
         <img className='pokemonId__img' src={dataPokemon?.sprites.other["official-artwork"].front_default} alt="" />
-        <h3 className='pokemonId__id'>{dataPokemon?.id}</h3>
+        <h3 className='pokemonId__id'># {dataPokemon?.id}</h3>
         <h2 className='pokemonId__name'>{dataPokemon?.name}</h2>
         <section className='pokemonId__features'>
           <div className='pokemonId__feature'>
