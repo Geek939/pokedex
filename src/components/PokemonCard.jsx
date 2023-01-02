@@ -1,11 +1,21 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import "./styles/PokemonCard.css"
 
 
 const PokemonCard = ({pokemon}) => {
 
   const [dataPokemon, setDatapokemon] = useState()
+
+  const navigate = useNavigate()
+
+  const types = dataPokemon?.types.map(type => type.type.name).join(" / ")
+
+  const handleClickPokemon = () => {
+    navigate(`/pokedex/${dataPokemon?.id}`)
+
+  }
 
 
 
@@ -16,11 +26,11 @@ const PokemonCard = ({pokemon}) => {
     
   },[])
 
-    const types = dataPokemon?.types.map(type => type.type.name).join(" / ")
+   
 
 
   return (
-    <article className={`pokeCard border ${dataPokemon?.types[0].type.name}`}>
+    <article  onClick={handleClickPokemon} className={`pokeCard border ${dataPokemon?.types[0].type.name}`}>
       <section className={`pokeCard__header bg-lg-${dataPokemon?.types[0].type.name}`}></section>
       <section className='pokeCard__content'>
       <img className='pokeCard__img' src= {dataPokemon?.sprites.other["official-artwork"].front_default} alt="" />
@@ -31,7 +41,7 @@ const PokemonCard = ({pokemon}) => {
       <section className='pokeCard__stats'>
         {
           dataPokemon?.stats.map (stat => (
-        <div className='pokeCard__stat' >
+        <div  key={stat.stat.name} className='pokeCard__stat' >
           <p className='pokeCard__stat-name'>{stat.stat.name}</p>
           <p className='pokeCard__stat-value'>{stat.base_stat}</p>
         </div>
