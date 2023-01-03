@@ -1,0 +1,50 @@
+.header{
+    position: relative;
+    height: 120px;
+    width: 100%;
+    background-color: var(--color-red);
+}
+
+.header__img{
+    max-width: 350px;
+    margin-left: 10px;
+}
+
+.header__black{
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+}
+
+.header__circle{
+
+    position: absolute;
+    width: 70px;
+    aspect-ratio: 1;
+    background-color: white;
+    bottom: 5px;
+    right: 10px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 8px solid black;
+}
+
+ .header__circle--int{
+
+    position: absolute;
+    width: 35px;
+    aspect-ratio: 1;
+    background-color: rgb(45 45 45);
+    bottom: 7.75px;
+    left: 50%;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 6px solid black;
+}
+
+
+
