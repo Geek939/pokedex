@@ -8,19 +8,16 @@ import "./styles/pokedex.css"
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
   const [types, setTypes] = useState([])
-  const [namePokemon, setNamePokemon] = useState("")
-  const [pokemonsFilter, setPokemonsFilter] = useState([])
   
   const nameTrainer = useSelector(state => state.nameTrainer)
 
-  const handleSubmit = (e) => {
+  const handleSubmit=(e)=>{
     e.preventDefault()
-    const name = e.target.namePokemon.value
-    setNamePokemon(name)
   }
+  
 
   useEffect(() => {
-    const URL = "https://pokeapi.co/api/v2/pokemon/?limit=30" /*1154*/
+    const URL = "https://pokeapi.co/api/v2/pokemon/?limit=15" /*1154*/
     axios.get(URL)
     .then(res => setPokemons(res.data.results))
     .catch(err => console.log(err))
@@ -34,11 +31,6 @@ const Pokedex = () => {
     .catch(err=> console.log(err))
 
   },[])
-
-  useEffect(() => {
-    const newPokemons = pokemons.filter( pokemon => pokemon.name.includes(namePokemon) )
-    setPokemonsFilter(newPokemons)
-  },[namePokemon])
   
   return (  
     <main>
@@ -59,7 +51,7 @@ const Pokedex = () => {
         </select>
       </form>
       </header>
-      <ListPokemons pokemons={pokemonsFilter} />
+      <ListPokemons pokemons={pokemons} />
     </main>
 
   )
