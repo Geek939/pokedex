@@ -8,11 +8,15 @@ import "./styles/pokedex.css"
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
   const [types, setTypes] = useState([])
+  const [namePokemon, setNamePokemon] = useState("")
+  const [pokemonsFilter, setPokemonsFilter] = useState([])
   
   const nameTrainer = useSelector(state => state.nameTrainer)
 
   const handleSubmit=(e)=>{
     e.preventDefault()
+    const name = e.target.namePokemon.value
+    setNamePokemon(name)
   }
   
 
@@ -31,6 +35,11 @@ const Pokedex = () => {
     .catch(err=> console.log(err))
 
   },[])
+
+  useEffect(() => {
+    const newPokemons = pokemons.filter(pokemon => pokemon.name.includes(namePokemon))
+    setPokemonsFilter(newPokemons)
+  },[namePokemon])
   
   return (  
     <main>
@@ -39,7 +48,7 @@ const Pokedex = () => {
       <p>Welcome <span>{nameTrainer}</span>, here you can find your favorite pokemon</p>
       <form onSubmit={handleSubmit} className='pokedex__form'>
         <div className='pokedex__search'>
-          <input type="text" />
+          <input type="text" id='namePokemon' />
           <button type='submit'>Search</button>
         </div>
         <select className='pokedex__select'>
@@ -51,7 +60,7 @@ const Pokedex = () => {
         </select>
       </form>
       </header>
-      <ListPokemons pokemons={pokemons} />
+      <ListPokemons pokemons={pokemonsFilter} />
     </main>
 
   )
