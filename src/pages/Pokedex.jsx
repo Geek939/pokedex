@@ -10,6 +10,7 @@ const Pokedex = () => {
   const [types, setTypes] = useState([])
   const [namePokemon, setNamePokemon] = useState("")
   const [pokemonsFilter, setPokemonsFilter] = useState([])
+  const [pokemonType, setPokemonType] = useState("")
   
   const nameTrainer = useSelector(state => state.nameTrainer)
 
@@ -18,15 +19,29 @@ const Pokedex = () => {
     const name = e.target.namePokemon.value
     setNamePokemon(name)
   }
+
+  const handleChangeSelect = (e) => {
+    setPokemonType (e.target.value)
+  }
   
 
   useEffect(() => {
-    const URL = "https://pokeapi.co/api/v2/pokemon/?limit=15" /*1154*/
+    const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=30"}` /*Limit 1154*/
     axios.get(URL)
-    .then(res => setPokemons(res.data.results))
+    .then(res => {
+      if(pokemonType){
+        const newPokemons = res.data.pokemon.map(pokemon =>({
+          name: pokemon.pokemon.name,
+          url: pokemon.pokemon.url
+        }))
+        setPokemons (newPokemons)
+      }else{
+        setPokemons(res.data.results)
+      }
+    })
     .catch(err => console.log(err))
   
-  },[])
+  },[pokemonType])
 
   useEffect(()=> {
     const URL ="https://pokeapi.co/api/v2/type"
@@ -37,9 +52,10 @@ const Pokedex = () => {
   },[])
 
   useEffect(() => {
+   
     const newPokemons = pokemons.filter(pokemon => pokemon.name.includes(namePokemon))
     setPokemonsFilter(newPokemons)
-  },[namePokemon])
+  },[namePokemon, pokemons])
   
   return (  
     <main>
@@ -51,7 +67,7 @@ const Pokedex = () => {
           <input type="text" id='namePokemon' />
           <button type='submit'>Search</button>
         </div>
-        <select className='pokedex__select'>
+        <select onChange={handleChangeSelect} className='pokedex__select'>
           <option value="">All pokemons</option>
           {
             types.map(type => <option value={type.name} key={type.url}>{type.name}</option>)
