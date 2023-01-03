@@ -30,10 +30,7 @@ const Pokedex = () => {
     axios.get(URL)
     .then(res => {
       if(pokemonType){
-        const newPokemons = res.data.pokemon.map(pokemon =>({
-          name: pokemon.pokemon.name,
-          url: pokemon.pokemon.url
-        }))
+        const newPokemons = res.data.pokemon.map(pokemon => pokemon.pokemon)
         setPokemons (newPokemons)
       }else{
         setPokemons(res.data.results)
