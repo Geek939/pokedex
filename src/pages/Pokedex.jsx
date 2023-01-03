@@ -11,6 +11,7 @@ const Pokedex = () => {
   const [namePokemon, setNamePokemon] = useState("")
   const [pokemonsFilter, setPokemonsFilter] = useState([])
   const [pokemonType, setPokemonType] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
   
   const nameTrainer = useSelector(state => state.nameTrainer)
 
@@ -26,7 +27,7 @@ const Pokedex = () => {
   
 
   useEffect(() => {
-    const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=30"}` /*Limit 1154*/
+    const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=20"}` /*Limit 1154*/
     axios.get(URL)
     .then(res => {
       if(pokemonType){
