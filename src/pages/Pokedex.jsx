@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import ListPokemons from '../components/ListPokemons'
 import "./styles/pokedex.css"
+import { paginationLogic } from '../helpers/paginationLogic'
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
@@ -24,10 +25,16 @@ const Pokedex = () => {
   const handleChangeSelect = (e) => {
     setPokemonType (e.target.value)
   }
+
+  const {lastPage, pagesInBlock, pokemonsInPage} = paginationLogic(currentPage, pokemonsFilter)
+
+  const handleClickPage = (newPage)=>{
+    setCurrentPage(newPage)
+  }
   
 
   useEffect(() => {
-    const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=20"}` /*Limit 1154*/
+    const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=100"}` /*Limit 1154*/
     axios.get(URL)
     .then(res => {
       if(pokemonType){
@@ -74,7 +81,12 @@ const Pokedex = () => {
         </select>
       </form>
       </header>
-      <ListPokemons pokemons={pokemonsFilter} />
+      <ListPokemons pokemons={pokemonsInPage} />
+      <ul>
+        {
+          pagesInBlock.map([pageInBlock=><li onClick={handleClickPage (pageInBlock)}  key={pageInBlock}>{pageInBlock}</li>])
+        }
+      </ul>
     </main>
 
   )
