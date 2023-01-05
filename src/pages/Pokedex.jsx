@@ -52,6 +52,14 @@ const Pokedex = () => {
       setCurrentPage(newPage)
     }
   }
+
+  const handleFirstPage = () =>{
+    setCurrentPage(1)
+  }
+
+  const handleLastPage = () =>{
+    setCurrentPage(lastPage)
+  }
   
   useEffect(() => {
     const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=100"}` /*Limit 1154*/
@@ -102,13 +110,16 @@ const Pokedex = () => {
       </form>
       </header>
       <ListPokemons pokemons={pokemonsInPage} />
-      <ul>
+      <ul className='pokedex__listPages'>
         <li onClick={handlePreviusPage}>{"<"}</li>
+          <li onClick={handleFirstPage}>...</li>
         {
-          pagesInBlock.map(pageInBlock=><li onClick={() => handleClickPage (pageInBlock)}  key={pageInBlock}>{pageInBlock}</li>)
+          pagesInBlock.map(pageInBlock=><li className={currentPage===pageInBlock ? "actualPage" : ""} onClick={() => handleClickPage (pageInBlock)}  key={pageInBlock}>{pageInBlock}</li>)
         }
+        <li onClick={handleLastPage}>...</li>
+        <li onClick={handleNextPage}>{">"}</li>
       </ul>
-      <li onClick={handleNextPage}>{">"}</li>
+      
     </main>
 
   )
