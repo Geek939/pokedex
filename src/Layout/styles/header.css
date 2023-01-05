@@ -46,5 +46,15 @@
     border: 6px solid black;
 }
 
+.header__logout{
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 300ms color ease;
+}
+
+.header__logout:hover{
+    color: red;
+}
 
 

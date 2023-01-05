@@ -6,11 +6,19 @@ import Pokemon from './pages/Pokemon'
 import RouteProtected from './components/RouteProtected'
 import HomeProtected from './components/HomeProtected'
 import Footer from './Layout/Footer'
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 
 
 function App() {
   
+  const nameTrainer = useSelector(state=>state.nameTrainer)
+
+  useEffect(()=>{
+    localStorage.setItem("nameTrainer", nameTrainer)
+
+  },[nameTrainer])
 
   return (
     <div className="App">
