@@ -92,13 +92,13 @@ const Pokedex = () => {
   
   return (  
     <main>
-      <header>
+      <header className='pokedex__header'>
       <h1>Pokedex</h1> 
       <p>Welcome <span>{nameTrainer}</span>, here you can find your favorite pokemon</p>
       <form onSubmit={handleSubmit} className='pokedex__form'>
         <div className='pokedex__search'>
-          <input type="text" id='namePokemon' />
-          <button type='submit'>Search</button>
+          <input className='pokedex__input' type="text" id='namePokemon' />
+          <button className='pokedex__btn-Search' type='submit'>Search</button>
         </div>
         <select onChange={handleChangeSelect} className='pokedex__select'>
           <option value="">All pokemons</option>
