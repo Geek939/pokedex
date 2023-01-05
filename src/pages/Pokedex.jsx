@@ -6,6 +6,7 @@ import ListPokemons from '../components/ListPokemons'
 import "./styles/pokedex.css"
 import { paginationLogic } from '../helpers/paginationLogic'
 
+
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
   const [types, setTypes] = useState([])
@@ -31,8 +32,27 @@ const Pokedex = () => {
   const handleClickPage = (newPage)=>{
     setCurrentPage(newPage)
   }
-  
 
+  const handleNextPage = () => {
+      const newPage = currentPage + 1
+      if (newPage > lastPage){
+        setCurrentPage (1)
+      } 
+      else{
+        setCurrentPage(newPage)
+      }
+  }
+
+  const handlePreviusPage = () => {
+    const newPage = currentPage -1
+    if (newPage < 1){
+      setCurrentPage(lastPage)
+    }
+    else{
+      setCurrentPage(newPage)
+    }
+  }
+  
   useEffect(() => {
     const URL = `https://pokeapi.co/api/v2/${pokemonType ? `type/${pokemonType}/` : "pokemon/?limit=100"}` /*Limit 1154*/
     axios.get(URL)
@@ -83,10 +103,12 @@ const Pokedex = () => {
       </header>
       <ListPokemons pokemons={pokemonsInPage} />
       <ul>
+        <li onClick={handlePreviusPage}>{"<"}</li>
         {
-          pagesInBlock.map([pageInBlock=><li onClick={handleClickPage (pageInBlock)}  key={pageInBlock}>{pageInBlock}</li>])
+          pagesInBlock.map(pageInBlock=><li onClick={() => handleClickPage (pageInBlock)}  key={pageInBlock}>{pageInBlock}</li>)
         }
       </ul>
+      <li onClick={handleNextPage}>{">"}</li>
     </main>
 
   )
