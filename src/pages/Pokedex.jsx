@@ -91,7 +91,8 @@ const Pokedex = () => {
   },[namePokemon, pokemons])
   
   return (  
-    <main>
+    <main className='main_pokedex'>
+      
       <header className='pokedex__header'>
       <h1>Pokedex</h1> 
       <p>Welcome <span>{nameTrainer}</span>, here you can find your favorite pokemon</p>

@@ -4,6 +4,11 @@
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 120px);
+    background-image: url(/images/Fondo);
+    background-size: cover;
+    background-position: center;
+   
+    
 }
 
 .home__img{
